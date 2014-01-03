@@ -1,0 +1,74 @@
+.header
+  .main
+    .info
+      %span
+        Dlaczego warto skorzystać z MojejZaliczki.pl?
+        Zobacz video autora serwisu.
+      %br
+.invitation
+  .main
+    .button.blue
+      =link_to 'wpłać zaliczkę teraz!', new_payment_path
+    .textright
+      Dzięki nam masz 100% pewność, ze Twoje pieniądze nie przepadną, gdy wykonawca nie wykona swojej pracy.
+.row.middle-content
+  .col.col_8
+    %h2
+      Przykłady z życia wzięte...
+    .testimonials1
+      %ul.qoutes
+        %li
+          %blockquote
+            %p
+              Serwis MojaZaliczka uchroniła mnie przed nieuczciwym wykonawcą :). Wykonawca nie wywiązał się z powierzonego
+              zlecenia. Bez problemu odzyskałem swoje pieniądze. Dzieki!
+          %p.author
+            Zleceniodawca
+            %strong
+        %li
+          %blockquote
+            %p
+              Często nawiązuje współpracę z różnymi freelancerami, niestety oprócz ich portfolio nie znam historii przebiegu wykonanych zleceń.
+              Niestety kilka razy zostałem oszukany, wpłacałem zaliczkę, po czym zleceniobiorca znikał... Odkąd zacząłem
+              korzystać z MojejZaliczki, nie martwię się o swoje pieniądze.
+          %p.author
+            Zleceniodawca
+            %strong
+        %li
+          %blockquote
+            %p
+              Serwis MojaZaliczka pomógł mi odzyskać pieniądze za moją pracę. Zleceniodawca wciąż dokładał mi nowych
+              funkcjonalności - w tej samej cenie, aż w końcu powiedziałem dość! Wykonałem zlecenie, ale niestety nie
+              otrzymałem zgody na wypłatę. Po wyjaśnieniu swoich racji odzyskałem pieniądze za zlecenie :).
+          %p.author
+            Zleceniobiorca
+            %strong
+
+  .col.col_8{:style=> 'margin-left: 25px;'}
+    %ul.home-img
+      %li
+        =png('why')
+        %div
+          %h2 Jak powstała MojaZaliczka.pl?
+          %p
+            W swoim życiu zostałem oszukany klika razy, na szczęście nie były to wielkie kwoty, w jednym przypadku sprawa wciąż
+            się toczy... (prokurator nie może doprowadzić świadka/podejrzanego na przesłuchanie), w drugim przypadku postanowiłem
+            lepiej zainwestować swój czas, nie zgłosiłem sprawy na policje, po prostu stworzyłem ten serwis.
+      %li
+        =png('dollars')
+        %div
+          %h2 Ile to kosztuje...?
+          %p
+            %strong
+              Serwis jest w 100% darmowy, nie pobieramy żadnych prowizji,
+            pieniądze, które będą czekały na wypłatę będą generowały
+            odsetki, 10% z kwoty odsetek będzie przeznaczona na obsługę serwisu, a pozostałe 90% przeznaczę na #{link_to 'cele_charytatywne', mission_path}
+            Chcę uchronić zleceniodawców i zleceniobiorców przed oszustami.
+        %li
+          =png('cheat')
+          %div
+            %h2 MojaZaliczka.pl - bat na oszustów!
+            %p
+              Serwis MojaZaliczka.pl oparty jest na zasadach #{link_to 'escrow', '', :href=> 'http://pl.wikipedia.org/wiki/Escrow', :target=> '_blank', :rel=> 'nofollow'}
+              w skrócie: pieniądze na wykonanie zlecenia są przelewane na konto strony trzeciej, zleceniobiorca wie, że pieniądze
+              otrzyma po wykonaniu zlecenia, a zleceniodawca wie, że jeśli zostanie oszukany, bez problemu odzyska swoje pieniądze.

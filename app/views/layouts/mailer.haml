@@ -1,0 +1,21 @@
+!!!
+%html{:lang => "pl", "xml:lang" => "pl", :xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %title= @page_title ||= 'MojaZaliczka.pl'
+    %meta{:content => "text/html;charset=utf-8", "http-equiv" => "content-type"}/
+    %style{:type=> 'text/css'}
+      * {margin: 5px;padding: 0px;}
+      body {color: #000;font-size: 100%;font-family: Arial, Tahoma, Verdana,  Sans-serif; line-height: 140%;}
+      h2 {border: 1px solid #F1F1F1;border-left: 0;border-right: 0;margin: 5px;color: #ff6e17;font-size: 14px;line-height:140%;}
+      h2, h3, p {padding: 5px 10px;font-weight: normal;}
+      img {border: none;}
+      a {color: #002f8c;text-decoration: underline;}
+      a:hover {color: ##002f8c;}
+      ul {list-style: square, margin: 5px 10px 10px 20px;padding-top: 0;}
+      \.quote {font-style: italic;}
+      \.footer {font-size: 11px; color: #999;}
+  %body
+    = yield
+  %p.footer
+    Nadawcą wiadomości jest serwis #{link_to 'www.mojazaliczka.pl', home_url}. Rafath Khan, ul. Żytnia 12, 16-300 Augustów,
+    W razie potrzeby zadzwoń do nas: 507 318 118

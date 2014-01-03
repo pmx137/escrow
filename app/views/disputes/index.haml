@@ -1,0 +1,39 @@
+=render :partial=> 'shared/site_header', :locals=> {:title=> "#{current_user.full_name} - spór o zaliczkę", :p_description=> '', :description=> 'account'}
+.main
+  .row
+    .col.col_10
+      .comments
+        %ul.owner
+          %li.user
+            %span
+              =time_ago_in_words @payment.dispute_created_at
+            %strong
+              =@payment.dispute.complainant.full_name
+          %li.body
+            =simple_format @payment.dispute_complaint
+
+        -unless @payment.dispute.dispute_comments.blank?
+          -@payment.dispute.dispute_comments.each do |c|
+            %ul{:class=> cycle(:odd,:even)}
+              %li.user
+                %span
+                  =time_ago_in_words c.created_at
+                %strong
+                  =c.user_full_name
+              %li.body
+                =simple_format c.body
+      -unless @payment.dispute_is_ended
+        =semantic_form_for @dispute_comment, :url=> dis_add_comment_path do |form|
+          = form.inputs :name => '', :id=> 'basic' do
+            =form.input :body, :as=> :text, :input_html=> {:rows=> 10}
+
+          = form.buttons :name=> '' do
+            = form.commit_button 'Zapisz komentarz'
+            = form.input :dispute_id, :as=> :hidden
+            = form.input :payment_id, :as=> :hidden
+
+        %script{:type=> 'text/javascript'}
+          $('.formtastic').valtastic();
+
+    .col.col_6
+      =render :partial=> 'dispute_details'

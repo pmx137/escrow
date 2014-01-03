@@ -1,0 +1,62 @@
+- payment_type ||= 'outgoing'
+- unless payments.blank?
+  %table.list{:cellspacing=> 0}
+    %tr
+      %th Lp.
+      %th nazwa
+      %th kwota
+      %th status
+      %th data
+      %th opcje
+    - i = 0
+    -payments.each do |op|
+      - i += 1
+      %tr{:class=> cycle(:odd, :even), :id=> "row_#{op.url_token}"}
+        %td
+          ="#{i}."
+
+        %td
+          =payment_link op.title, op.service_url, 70
+        %td.r
+          =set_price op.amount
+        %td{:class=> "status#{op.payment_state}"}
+          =payment_state op.payment_state
+        %td
+          =op.created_at.strftime('%d.%m.%Y')
+        %td.opt
+          -if payment_type == 'outgoing'
+            =link_to pro_details_path(op.id), :class=> 'cb', :rel=> 'zaliczka' do
+              =png('icons/information', :title=> 'szczegóły zaliczki')
+            =link_to pro_pay_me_path(op.url_token), :class=> (op.payment_state == -1?'':'disabled')  do
+              =png('icons/money_add', :title=> 'wpłać zaliczkę')
+            =link_to pro_details_path(op.id), :class=> "cb #{(op.payment_state == 0?'':'disabled')}"  do
+              =png('icons/group_go', :title=> 'zapłać odbiorcy')
+            =link_to '#', :class=> "delete #{(op.payment_state == -1?'':'disabled')}", :rel=> op.url_token do
+              =png('icons/bin', :title=> 'usuń zaliczkę')
+            =link_to dis_index_path(op.id), :class=> (op.payment_state == 0?'':'disabled')  do
+              =png('icons/thumb_down', :title=> 'spór')
+          -else
+            =link_to pro_details_path(op.id), :class=> 'cb', :rel=> 'zaliczka' do
+              =png('icons/information', :title=> 'szczegóły zaliczki')
+            =link_to pro_details_path(op.id), :class=> "cb #{(op.payment_state == 0?'':'disabled')}"  do
+              =png('icons/group_go', :title=> 'poproś o wypłatę')
+            =link_to dis_index_path(op.id), :class=> (op.payment_state == 0?'':'disabled')  do
+              =png('icons/thumb_down', :title=> 'spór')
+  =colorbox 'a.cb'
+  :javascript
+    $('a.delete').bind('click', function(){
+    if (!$(this).hasClass('disabled')){
+    url_token = $(this).attr('rel')
+    if (confirm('Czy na pewno chesz usunąć tą zaliczkę?')) {
+    $.ajax({
+    url: '/usun/'+url_token,
+    success: function(res) {
+    $('#row_'+url_token).fadeOut('slow');
+    }});
+    }
+    }
+    return false;
+    });
+- else
+  %h5.empty
+    Brak płatności

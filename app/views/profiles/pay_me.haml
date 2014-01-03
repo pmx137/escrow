@@ -1,0 +1,17 @@
+=render :partial=> 'shared/site_header', :locals=> {:title=> 'Wykonaj przelew', :p_description=> 'Na tej stronie możesz wykonać przelew', :description=> 'account'}
+.main
+  .row
+    %p
+      Zleceniobiorca otrzymał od nas wiadomość, że czeka na niego zaliczka. Kwotę #{set_price @payment.amount} należy przelać na
+      %strong podane poniżej dane.
+      Twoja zaliczka będzie bezpiecznie czekała, aż zleceniobiorca skończy zlecenie, jeśli minie termin wykonania zlecenia a
+      zleceniobiorca nie wywiąże się z umowy, będziesz mógł odzyskać swoją zaliczkę.
+    %p
+      Poniższe dane są potrzebne do wykonania przelewu. Skopiuj je i wybierz swój bank z poniżej listy, po kliknięciu na logo banku,
+      przejdziesz na stronę Banku. Wpłaty księgujemy w ciągu 24 godzin, gdy pieniądze znajdą się na naszym koncie,
+      poinformujemy o tym fakcie Ciebie i Zleceniobiorcę.
+
+      =render :partial=> 'shared/rafath_account'
+
+  .row
+    =banks

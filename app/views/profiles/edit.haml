@@ -1,0 +1,26 @@
+.row
+  .col.col_12
+    %h2 Zmiana danych
+    =semantic_form_for @user, :url=> pro_save_path do |form|
+      = form.inputs :name => '', :id=> 'basic' do
+        %ul.double-field
+          = form.input :firstname, :wrapper_html=> {:class=> 'lileft'}
+          = form.input :lastname, :wrapper_html=> {:class=> 'lileft'}
+        %ul.double-field
+          = form.input :mobile, :wrapper_html=> {:class=> 'lileft'}
+          = form.input :email, :wrapper_html=> {:class=> 'lileft'}
+        = form.input :account_owner
+        = form.input :account_no
+      = form.buttons :name=> '' do
+        = form.commit_button  'Zapisz dane'
+        %li
+          lub #{link_to 'zamknij', '', :class=> 'close'}
+:javascript
+  $('.formtastic').valtastic();
+  Cufon.replace('h1, h2, h3', { fontFamily: 'Myriad Pro' });
+  Cufon.now();
+  $('.close').bind('click', function(){
+  parent.$.fn.colorbox.close()
+  });
+
+

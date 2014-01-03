@@ -1,0 +1,115 @@
+$blue: #3bbfce;
+$margin:16px;
+
+body {
+  /*background: url('bg_home.jpg') repeat-x;*/
+  background: url('bg_menu.png') repeat-x;
+}
+
+.header {
+  background-image: url('bg_home.png');
+  height: 352px;
+}
+
+.header .main {
+  background: url('bg_main.jpg') no-repeat;
+  height: 352px;
+  text-align: left;
+  overflow: hidden;
+}
+
+.header .info {
+  float: left;
+  padding-top: 85px;
+  width: 535px;
+  font-size: 32px;
+  line-height: 160%;
+  color: #fff;
+}
+
+.header .video {
+  padding-top: 35px;
+  width: 450px;
+  float: right;
+}
+
+.middle-content {
+  width: 1000px;
+  margin: 10px auto 0;
+  padding: 0;
+  text-align: center;
+}
+
+.invitation {
+  line-height: 70px;
+  font-size: 14px;
+}
+.row .col p {
+  text-align: left;
+}
+/* ________________ quoutes ____________*/
+ul.qoutes {
+  list-style: none;
+}
+
+.qoutes blockquote, .qoutes blockquote p {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+.qoutes blockquote {
+  text-align: center;
+  display: block;
+  border-bottom: 1px solid #fff;
+  margin: 3px 5px 15px;
+  background: #fff url(quote-marks.png) 101% 100% no-repeat;
+  -webkit-box-shadow: rgba(0, 0, 0, .45) 0 1px 2px;
+  -moz-box-shadow: rgba(0, 0, 0, .45) 0 1px 5px;
+  box-shadow: rgba(0, 0, 0, .45) 0 1px 5px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+.qoutes blockquote p {
+  padding-top: 25px;
+  padding-bottom: 40px;
+  text-align: center;
+}
+.qoutes blockquote p {
+  margin: 16px 0 -16px;
+  padding: 14px 15px 31px;
+  background: url(testimonials-tip.png) 100% 100% no-repeat;
+}
+.qoutes blockquote.style-1 {
+  font-size: 1.3em;
+  line-height: 1.6em;
+}
+.qoutes blockquote.style-1 p {
+  color: #cb806c;
+  text-transform: italic;
+  text-align: center;
+}
+.qoutes p.author {
+  margin: 15px 5px 0 0;
+  padding: 0;
+  text-align: right;
+  height: 20px;
+  overflow: hidden;
+}
+.home-img {
+  list-style: none;
+} 
+.home-img img {
+  float: left;
+  margin-top: 44px;
+}
+.home-img div {
+  margin-left: 75px;
+}
+ol.regulations {
+  list-style: lower-alpha;
+  margin-left: 30px;
+}
+ol.regulations li{
+  margin-bottom: 6px;
+}

@@ -1,0 +1,24 @@
+# Outgoing email settings
+production:
+  delivery_method: :smtp
+  smtp_settings:
+    enable_starttls_auto: :false
+    openssl_verify_mode: 'none'
+    address: ""
+    port: 587
+    domain: ""
+    authentication: :plain
+    user_name: ""
+    password: ""
+    
+development:
+  delivery_method: :smtp
+  smtp_settings:
+    enable_starttls_auto: :false
+    openssl_verify_mode: 'none'
+    address: ""
+    port: 587
+    domain: ""
+    authentication: :plain
+    user_name: ""
+    password: ""

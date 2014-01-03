@@ -1,0 +1,10 @@
+=render :partial=> 'shared/site_header', :locals=> {:title=> "Zmiana hasła", :p_description=> '', :description=> "Na tej stronie możesz zresetować swoje hasło"}
+#page-content.main
+  .row
+    %p Zmiana hasła
+    = semantic_form_for @user, :url=> password_reset_path(params[:id]) do |form|
+      = form.inputs :name => '', :id=> "basic" do
+        = form.input :password
+        = form.input :password_confirmation
+      = form.buttons do
+        = form.commit_button 'Zmień hasło'

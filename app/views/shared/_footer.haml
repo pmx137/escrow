@@ -1,0 +1,57 @@
+#footerwrap
+  #shadowtop
+  #footercontainer
+    .wrapper
+      .row
+        .col.col_4
+          %h3 Polecamy
+          %ul
+            %li sdsd
+            %li sdsds
+            %li sdsds
+
+        .col.col_5
+          %h3 Kontakt do nas
+          %table
+            %tr
+              %th Imię i nazwisko
+              %td Rafath Khan
+            %tr
+              %th Email
+              %td
+                =mail_to 'rafath@mojazaliczka.pl', 'rafath@mojazaliczka.pl', :encode=> :hex
+            %tr
+              %th Adres
+              %td ul. Żytnia 12
+            %tr
+              %th Miejscowość
+              %td 16-300 Augustów
+            %tr
+              %th Telefon
+              %td 507 318 118
+
+          %ul.socials
+            %li
+              %a{"data-rel" => "fadeimg", :href => "#"}
+                =png('footer/facebook')
+            %li
+              %a{"data-rel" => "fadeimg", :href => "#"}
+                =png('footer/twitter')
+            %li
+              %a{"data-rel" => "fadeimg", :href => "#"}
+                =png('footer/linkedin')
+            %li
+              %a{"data-rel" => "fadeimg", :href => "#"}
+                =png('footer/google')
+        .col.col_9
+
+  #gradientleftfooter
+  #gradientrightfooter
+  #shadowbottom
+#footer
+  .wrapper
+    .textleft &copy; #{Time.now.year} Wszelkie prawa dozwolone
+    %ul.textright
+      %li #{link_to 'Regulamin', regulations_path}
+      %li #{link_to 'Cele charytatywne', mission_path}
+      %li #{link_to 'Kontakt', contact_path}

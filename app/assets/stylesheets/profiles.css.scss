@@ -1,0 +1,60 @@
+table.list {
+  width: 100%;
+  border: 2px solid #d4e5ed;
+  padding: 0;
+}
+
+table.list tr th {
+  color: #1c436a;
+  text-align: left;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 3px 4px 3px 10px;
+  background: #e8f3f9 url(border_1px.png) no-repeat 0 bottom;
+  text-transform: capitalize;
+}
+table.list tr th:first-child {
+  color: #000;
+}
+table.list td {
+  text-align: left;
+  line-height: 140%;
+}
+table.list td.r {
+  text-align: right;
+}
+table.list td.c { text-align: center;}
+table.list td.l { text-align: left;}
+table.list tr.odd { background: url(bg_tr_odd.png) repeat-x 0 0; }
+table.list tr.even { background: url(bg_tr_even.png) repeat-x 0 0; }
+table.list tr td {
+  padding: 3px 10px 4px 10px;
+  border-top: 1px solid #d4e5ed;
+  border-left:  1px solid #d4e5ed;
+}
+table.list tr td:first-child {
+  border-left: none;
+}
+table.list td.status1 {
+  background: url(icons/payment.png) 10px center no-repeat;
+  padding-left: 35px;
+}
+table.list td.status2 {
+  background: url(icons/tick.png) 10px center no-repeat;
+  padding-left: 35px;
+}
+table.list td.status0 {
+  background: url(icons/money.png) 10px center no-repeat;
+  padding-left: 35px;
+}
+table.list td.status-1 {
+  background: url(icons/clock_red.png) 10px center no-repeat;
+  padding-left: 35px;
+}
+table.list td.opt img {
+  vertical-align: middle;
+  padding: 2px 5px;
+}
+table.list td.opt a{
+  text-decoration: none;
+}

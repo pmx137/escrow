@@ -1,0 +1,43 @@
+=render :partial=> 'shared/site_header', :locals=> {:title=> 'Spór o zaliczkę', :p_description=> '', :description=> 'account'}
+.main
+  .row
+    .col.col_16
+      -if @dispute.new_record?
+        %p
+          Spór o wypłatę pieniędzy pomoże nam w podjęciu decyzji, która ze stron ma rację i komu należy wypłacić pieniądze.
+          Obie strony maja 4 dni na rozwiązanie sporu, jeśli w ciągu tego czasu nie dojdzie do porozumienia, to obsługa
+          serwisu zapozna się z wpisanymi komentarzami i podejmie decyzję komu przyznać rację i komu wypłacić pieniądze.
+
+        %p
+          %strong
+            Jeśli jesteś Zleceniodawcą...
+          %br
+          Wypełnij poniższy formularz, podaj kwotę jaką chcesz zapłacić zleceniowcy od 0 do #{set_price @payment.amount} i
+          dokładnie opisze jaka jest przyczyna sporu.
+
+        %p
+          %strong
+            Jeśli jesteś Zleceniobiorcą...
+          %br
+          Podaj kwotę jaką chcesz otrzymać od Zleceniodawcy, opisz dokładnie dlaczego zaczynasz spór.
+
+      =semantic_form_for @dispute, :url=> dis_save_path do |form|
+        = form.inputs :name => '', :id=> 'basic' do
+          =form.input :amount_to_pay
+          - unless @dispute.new_record?
+            %p.lft
+              =simple_format @dispute.old_complaint
+          =form.input :complaint, :as=> :text, :input_html=> {:rows=> 10}
+
+
+        = form.buttons :name=> '' do
+          = form.commit_button @dispute.new_record? ? 'Dodaj' : 'Zapisz'
+          = form.input :payment_id, :as=> :hidden
+          = form.input :complainant_id, :as=> :hidden
+          = form.input :defendant_id, :as=> :hidden
+
+      %script{:type=> 'text/javascript'}
+        $('.formtastic').valtastic();
+        $('#dispute_amount_to_pay').bind('click', function(){
+        $(this).select();
+        });

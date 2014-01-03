@@ -1,0 +1,20 @@
+%p
+  %strong
+    Dzień dobry #{@payment.recipient_firstname},
+
+%p
+  Gratulujemy! Użytkownik #{@payment.payer_firstname} wysyłał do nas zlecenie wykonania przelewu na kwotę #{set_price @payment.amount}
+  za zlecenie #{@payment.title}.
+
+%p
+  %strong
+    Co teraz?
+
+%p
+  W ciągu 24 godzin wykonamy przelew na Twoje konto: <strong>#{@payment.r_account_owner}, #{@payment.r_account_no}</strong>
+  (dane konta możesz zmienić na stronie #{link_to 'swojego konta', pro_index_url}), klikając w ikonkę "szczegóły zaliczki",
+  a następnie klikając w link "zmień" przy Twoim koncie.
+
+%p
+  Pamiętaj, odsetki jakie zarabiamy na naszym koncie przeznaczamy na #{link_to 'cele charytatywne', mission_url}.
+  Dziękujemy za skorzystanie z naszego serwisu.

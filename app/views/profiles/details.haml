@@ -1,0 +1,83 @@
+.main-iframe
+  .row
+    .col.col_6
+      %h2 Dane Zleceniodawcy
+      %ul.payer
+        %li #{@payment.payer.full_name}
+        %li #{payment_link @payment.title, @payment.service_url, 90}
+        %li
+          kwota do zapłaty:
+          %strong #{set_price @payment.amount}
+    .col.col_5
+      %h2 Dane Zleceniobiorcy
+      %ul.recipient
+        - unless @payment.recipient.full_name == @payment.r_account_owner
+          %li #{@payment.recipient.full_name}
+        %li
+          %strong #{@payment.r_account_owner}
+        %li
+          numer rachunku: (#{link_to 'zmień', pro_edit_account_path(@payment.url_token), :class=> 'cbi'})
+          =colorbox('a.cbi', :iframe=> true)
+          %br
+          #{@payment.r_account_no}
+  .row
+    .hr
+    -if @payment.payment_state == -1
+      %h2 Dane do przelewu
+      =render :partial=> 'shared/rafath_account'
+    - elsif @payment.payment_state == 0 and current_user.id == @payment.payer_id
+      %h2 Zapłać zaliczkę
+      %p
+        Jeśli zlecenie zostało wykonane, możesz kliknąć przycisk <strong>"zapłać zaliczkę"</strong>. Na rachunek zleceniobiorcy zostanie
+        przelane #{set_price @payment.amount}.
+      %p
+        Jeśli nie jesteś zadowolony z jakości wykonania zlecenia możesz ubiegać się o zwrot zaliczki. W tym celu należy
+        stworzyć #{link_to 'spór', dis_index_path(@payment.id)}, Ty i zleceniobiorca będzieci mogli dojść do
+        porozumienia w kwestii wypłaty zaliczki.
+      .button.blue
+        =link_to 'zapłać zaliczkę', '#', :id=> 'pay_recipient'
+        
+    - elsif @payment.payment_state == 0 and current_user.id == @payment.recipient_id
+      %h2 Poproś o wypłatę
+      %p
+        Jeśli zlecenie zostało wykonane, możesz kliknąć przycisk <strong>"wypłać zaliczkę"</strong>. Wyślemy wiadomość do Zleceniodawcy,
+        czy wyraża zgodę na wypłatę środków, jeśli się zgodzi albo jeśli w ciągu 7 dni nie otrzymamy negatywnej odpowiedzi
+        kwota #{set_price @payment.amount} zostanie przelana na Twoje konto.
+      %p
+        W przypadku odmowy wypłaty zaliczki lub problemów ze Zleceniobiorcą możesz nadal ubiegać się o wypłatę zaliczki.
+        W tym celu należy stworzyć #{link_to 'spór', dis_index_path(@payment.id)}, Ty i zleceniodawca będzieci mogli dojść do
+        porozumienia w kwestii wypłaty zaliczki.
+
+      .button.blue
+        =link_to 'wypłać zaliczkę', '#', :id=> 'ask_pay'
+    - else
+      %p
+        Dziękujemy za skorzystanie z serwisu MojaZaliczka.pl
+        
+:javascript
+  Cufon.replace('h1, h2, h3', { fontFamily: 'Myriad Pro' });
+  Cufon.now();
+  $('#pay_recipient').bind('click', function(){
+  $.ajax({
+  url: '#{pro_pay_recipient_path(@payment.url_token)}',
+  beforeSend: function() {
+
+  },
+  success: function(res) {
+  alert(res);
+  }
+  });
+  return false;
+  });
+  $('#ask_pay').bind('click', function(){
+  $.ajax({
+  url: '#{pro_ask_for_payment_path(@payment.url_token)}',
+  beforeSend: function() {
+
+  },
+  success: function(res) {
+  alert(res);
+  }
+  });
+  return false;
+  });

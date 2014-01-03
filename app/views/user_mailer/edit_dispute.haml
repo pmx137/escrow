@@ -1,0 +1,20 @@
+%p
+  %strong
+    Dzień dobry #{@dispute.defendant.firstname},
+
+%p
+  Otrzymujesz tą wiadomość, ponieważ użytkownik: #{@dispute.complainant.full_name} naniósł zmiany w sporze.
+
+%p
+  %strong
+    Poniżej przyczyna sporu:
+%p
+  #{@dispute.complaint}
+  %br
+  kwota do wypłaty
+  %strong
+    #{set_price @dispute.amount_to_pay}
+
+%p
+  Możesz odpowiedzieć na spór, wejdź na stronę #{link_to dis_index_url(@dispute.payment_id), dis_index_url(@dispute.payment_id)}
+  i zostaw swój komentarz.

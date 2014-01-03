@@ -1,0 +1,9 @@
+=render :partial=> 'shared/site_header', :locals=> {:title=> "#{current_user.full_name} - Lista zaliczek", :p_description=> 'Konto użytkownika', :description=> 'account'}
+#columns_wrapper.main
+  .row.mtop10
+    %h2 Wpłacone zaliczki
+    =render :partial=> 'payments_table', :locals=> {:payments=> @outgoing_payments}
+
+  .row.mtop10
+    %h2 Oczekujące zaliczki
+    =render :partial=> 'payments_table', :locals=> {:payments=> @incoming_payments, :payment_type=> 'incoming'}

@@ -1,0 +1,19 @@
+%strong
+  Dzień dobry #{@user.firstname}!
+
+%p
+  Na stronie #{link_to 'MojaZaliczka.pl', home_url} zostało założone dla Ciebie konto, które pozwoli Ci na sprawdzanie
+  status Twojej zaliczki.
+  %br
+  %br
+  email do logowania:
+  %strong
+    #{@user.email}
+  %br
+  hasło:
+  %strong
+    #{@user.password}
+  %br
+  strona logowania:
+  %strong
+    #{link_to login_url, login_url}

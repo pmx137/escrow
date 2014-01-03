@@ -1,0 +1,12 @@
+=render :partial=> 'shared/site_header', :locals=> {:title=> "Zmiana hasła", :p_description=> '', :description=> "Na tej stronie możesz zresetować swoje hasło"}
+#page-content.main
+  %p
+    Podany adres email musi znajdować się w naszej bazie, ponieważ na ten adres zostanie wysłany link do strony, na
+    której będziesz mógł ustawić nowe hasło
+  = semantic_form_for @user, :url=> password_resets_path do |form|
+    = form.inputs :name => '', :id=> "basic" do
+      = form.input :email, :input_html=> {:class=> 'frm'}
+    = form.buttons do
+      = form.commit_button 'Zresetuj hasło'
+      %li
+        lub #{link_to 'zaloguj się', login_path}

@@ -1,0 +1,21 @@
+.row
+  .col.col_12
+    %h2 Zmiana hasła
+    %p
+      Hasło powinno mieć więcej niż 6 dowolnych znaków
+    =semantic_form_for @user, :url=> pro_change_pass_path, :id=> 'user_pass' do |form|
+      = form.inputs :name => '', :id=> 'basic_pass' do
+        = form.input :password
+        = form.input :password_confirmation
+      = form.buttons :name=> '' do
+        = form.commit_button 'Zmień hasło'
+        %li
+          lub #{link_to 'zamknij', '', :class=> 'close'}
+
+:javascript
+  $('.formtastic').valtastic();
+  Cufon.replace('h1, h2, h3', { fontFamily: 'Myriad Pro' });
+  Cufon.now();
+  $('.close').bind('click', function(){
+  parent.$.fn.colorbox.close()
+  });

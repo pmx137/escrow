@@ -1,0 +1,24 @@
+%p
+  %strong
+    Dzień dobry #{@payment.payer_firstname},
+
+%p
+  Użytkownik #{@payment.recipient_firstname} prosi o wypłatę kwoty #{set_price @payment.amount} za wykonanie zlecenia
+  #{@payment.title}.
+
+%p
+  %strong
+    Jak wypłacić pieniądze?
+
+%p
+  Zaloguj się na #{link_to 'swoje konto', pro_index_url}, na liście zleceń kliknij w ikonkę 'Zapłać zaliczkę', otworzy się
+  strona, na której będziesz mógł zapłacić wykonawcy.
+%p
+  Jeśli nie jesteś zadowolony z wykonania zlecenia lub zlecenie nie zostało wykonane całkowicię, możesz stworzyć
+  <strong>#{link_to 'spór', dis_index_url(@payment.id)}</strong>, w którym będziesz mógł opisać dlaczego nie chcesz wypłacić kwoty za
+  zlecenie. Możesz również zapłacić tylko część kwoty za wykonane zlecenie. Wszystkie te czynności będziesz mógł ustawić
+  na stronie  <strong>#{link_to 'sporu', dis_index_url(@payment.id)}</strong>
+
+%p
+  %strong
+    Uwaga. Jeśli nie zareagujesz na tego maila w ciągu 7 dni, wykonawca otrzyma od nas pełną kwotę za wykonanie zlecenia.

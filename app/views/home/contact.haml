@@ -1,0 +1,22 @@
+=render :partial=> 'shared/site_header', :locals=> {:title=> "Skontaktuj się z nami", :description=> 'Na tej stronie możesz wysłać do nas wiadomość'}
+#columns_wrapper.main
+  .row.mtop10.main
+    .col_8.col
+      %p
+        Jeśli masz do mnie jakieś pytania, wypełnij formularz.
+      %p
+        Aktualnie znajduję się pod adresem:
+        %br
+        %br
+        Rafath Khan
+        %br
+        ul. Żytnia 12
+        %br
+        16-300 Augustów
+        %br
+        %strong
+          =mail_to 'info@mojazaliczka.pl', 'info@mojazaliczka.pl', :encode=> 'hex'
+    =render(:partial=> 'shared/contact')
+
+:javascript
+  $('#new_message').valtastic();

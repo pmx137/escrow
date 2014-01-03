@@ -1,0 +1,10 @@
+#new_messagex.col_8.col
+  = semantic_form_for @message, :url=> contact_me_path do |form|
+    = form.inputs :name => '', :id=> 'basic' do
+      = form.input :name
+      = form.input :email, :as=> :email
+      = form.input :phone
+      = form.input :content, :as=> :text
+
+    = form.actions :name=> '', :id=> 'buttons' do
+      = form.action :submit, :as=> :button, :label=>  'Wyślij wiadomość'

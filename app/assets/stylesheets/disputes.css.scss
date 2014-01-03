@@ -1,0 +1,51 @@
+.comments {}
+.comments ul, .dispute_info ul {
+  list-style: none;
+  border: 1px solid #d4d3d3;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+  margin-bottom: 10px;
+}
+.comments ul li, .dispute_info ul li {
+  padding: 7px;
+}
+.comments ul li.user span {
+  float: right;
+}
+.comments ul.odd {
+  background: #eaf9ff;
+}
+.comments ul.odd li.user {
+  line-height: 200%;
+  background: #b9e1f5;
+}
+.comments ul.even {
+  background: #ddf5ff;
+}
+.comments ul.even li.user {
+  line-height: 200%;
+  background: #b5cad5;
+}
+.comments ul.owner {
+  background: #fff;
+}
+.comments ul.owner li.user {
+  line-height: 200%;
+  background: #2cb3fa;
+}
+.comments ul li p {
+  padding: 3px 0;
+}
+.dispute_info ul {
+  background: #f3f3f3;
+  text-align: center;
+}
+.dispute_info ul li {
+  border-top: 1px dotted #4c4c4c;
+}
+.dispute_info ul li:first-child {
+  border: none;
+}
+.dispute_info ul li strong{
+  display: block;
+}

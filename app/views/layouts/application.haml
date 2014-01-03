@@ -1,0 +1,38 @@
+!!!
+%html{:lang => "pl", "xml:lang" => "pl", :xmlns => "http://www.w3.org/1999/xhtml",'xmlns:og'=>"http://ogp.me/ns#", 'xmlns:fb'=>"http://www.facebook.com/2008/fbml"}
+  %head
+    %title= @page_title ||= 'Moja Zaliczka - bezpieczne zaliczki'
+    %meta{:content => "text/html;charset=utf-8", "http-equiv" => "content-type"}/
+    %meta{:content => @page_keywords, :name => "keywords"}/
+    %meta{:content => @page_description||= 'Nie musisz się obawiać, że gdy zostaniesz oszukany, to stracisz zaliczkę. Dowiedz się w jaki sposób Ty i Twoje pieniądze są chronieni', :name => "description"}/
+    %meta{'http-equiv'=> 'X-UA-Compatible', :content=> 'IE=8'}
+    =csrf_meta_tag
+    %link{:href => "icon.png", :rel => "icon", :type => "image/png"}
+
+    = stylesheet_link_tag 'application'
+    /[if lt IE 9]
+      = javascript_include_tag('http://html5shiv.googlecode.com/svn/trunk/html5.js', :media => 'all')
+    = javascript_include_tag 'application'
+
+    :javascript
+      Cufon.replace('h1, h2, h3', { fontFamily: 'Myriad Pro'});
+      Cufon.replace('nav ul li a', { fontFamily: 'Myriad Pro'});
+      Cufon.replace('.header .info span', { fontFamily: 'Myriad Pro'});
+      //Cufon.replace('.button', { fontFamily: 'Myriad Pro'});
+
+  %body
+    =render(:partial=> 'shared/navigation')
+    =yield
+    =render(:partial=> 'shared/footer')
+
+    :javascript
+      //Cufon.now();
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-25005020-2']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();

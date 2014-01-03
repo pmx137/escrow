@@ -1,0 +1,5 @@
+#menu.main
+  #{link_to_unless_current image_tag('logo.png', :class=> 'logo', :title=> '...i już nigdy więcej nie stracisz swojej zaliczki!'), home_path, :title=> 'Przejdź na stronę główną'}
+  %nav
+    =top_menu @current_page
+    =colorbox('a.zaloguj_sie')

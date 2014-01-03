@@ -1,0 +1,10 @@
+%p
+  %strong
+    Dzień dobry #{@recipient.firstname}
+
+%p
+  W sporze dotyczącym zlecenia #{@dispute.payment.title}, użytkownik: #{@comment.user.full_name} zostawił komentarz:
+%p
+  #{@comment.body}
+%p
+  Na komentarz możesz odpowiedzieć na #{link_to 'stronie sporu', dis_index_url(@dispute.payment_id)}

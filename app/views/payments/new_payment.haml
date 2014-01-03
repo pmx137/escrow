@@ -1,0 +1,53 @@
+.invitation
+  .main
+    %span
+      Dodaj szczegóły dotyczące Twojego zlecenia
+    %h1
+      =@page_title
+
+#columns_wrapper.main
+  %ol.breadcrumbs
+    = breadcrumbs
+  .row
+    .col_16.col
+      = semantic_form_for @payment, :url=> create_payment_path(params[:id]) do |form|
+        = form.inputs :name => '', :id=> 'payment_detail' do
+          %h3
+            Szczegóły zlecenia
+          = form.input :title, :as=> :string
+          = form.input :service_url, :wrapper_html=> {:class=> 'hidden'}, :as=> :string
+
+        = form.inputs :name => '', :id=> 'payer' do
+          %h3
+            Dane Zleceniodawcy
+          %ul.double-field
+            = form.input :p_firstname, :wrapper_html=> {:class=> 'lileft'}
+            = form.input :p_lastname, :wrapper_html=> {:class=> 'lileft'}
+          %ul.double-field
+            = form.input :p_email, :as=> :email, :wrapper_html=> {:class=> 'lileft'}
+            = form.input :p_mobile, :wrapper_html=> {:class=> 'lileft'}
+
+
+        = form.inputs :name => '', :id=> 'recipient' do
+          %h3
+            Dane Zleceniobiorcy
+          %ul.triple-field
+            = form.input :r_firstname, :wrapper_html=> {:class=> 'lileft'}
+            = form.input :r_lastname, :wrapper_html=> {:class=> 'lileft'}
+            = form.input :r_email, :as=> :email, :wrapper_html=> {:class=> 'lileft'}
+          %ul.triple-field
+            = form.input :r_account_owner, :wrapper_html=> {:class=> 'lileft'}
+            = form.input :r_account_no, :wrapper_html=> {:class=> 'lileft'}
+            = form.input :amount, :wrapper_html=> {:class=> 'lileft', :style=> 'width: 20%'}, :input_html => { :min => 1}, :as=> :number
+            %li{:style=> 'float: right; width: 10%;border:1px solid #000;', :class=>'lileft'}
+
+        = form.inputs :name=> '', :id=> 'human' do
+          = form.input :humanizer_answer, :label=> @payment.humanizer_question
+          = form.input :humanizer_question_id, :as=> :hidden
+
+        = form.actions :name=> '', :id=> 'buttons' do
+          = form.action :submit, :as=> :button, :label=> @page_title
+
+:javascript
+  -if params[:id].to_i == 1
+    $('#recipient').insertBefore('#payer');

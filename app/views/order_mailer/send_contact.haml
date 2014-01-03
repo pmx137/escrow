@@ -1,0 +1,17 @@
+%strong Witaj!
+%p
+  Ktoś przysłał wiadomość: 
+  =@ip
+%ul
+  %li
+    imię:
+    = @message.name
+  %li
+    telefon
+    = @message.phone
+  %li
+    email
+    = @message.email
+  %li
+    treść
+    = @message.content

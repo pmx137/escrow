@@ -1,0 +1,40 @@
+=render :partial=> 'shared/site_header', :locals=> {:title=> 'Szczegóły zaliczki', :description=> 'Poniżej znajdują się informacje o Twojej zaliczce'}
+.main
+  .row
+    .col.col_10
+      %h2 Dane Zleceniodawcy
+      %ul.payer
+        %li #{@payment.payer.full_name}
+        %li #{@payment.title.truncate(90)}
+        %li
+          kwota do zapłaty:
+          %strong #{set_price @payment.amount}
+    .col.col_6
+      %h2 Dane Zleceniobiorcy
+      %ul.recipient
+        - unless @payment.recipient.full_name == @payment.r_account_owner
+          %li #{@payment.recipient.full_name}
+        %li
+          %strong #{@payment.r_account_owner}
+        %li nr konta: #{@payment.r_account_no}
+
+  .row
+    -#%span.button.default-2.wide
+    .hr
+    %h2
+      Co teraz?
+    .col
+      %h2
+      %p
+        Zleceniobiorca otrzymał od nas wiadomość, że czeka na niego zaliczka. Kwotę #{set_price @payment.amount} należy przelać na
+        %strong podane poniżej dane.
+        Twoja zaliczka będzie bezpiecznie czekała, aż zleceniobiorca skończy zlecenie, jeśli minie termin wykonania zlecenia a
+        zleceniobiorca nie wywiąże się z umowy, będziesz mógł odzyskać swoją zaliczkę.
+      %p
+        Poniższe dane są potrzebne do wykonania przelewu. Skopiuj je i wybierz swój bank z poniżej listy, po kliknięciu na logo banku,
+        przejdziesz na stronę Banku. Wpłaty księgujemy w ciągu 24 godzin, gdy pieniądze znajdą się na naszym koncie,
+        poinformujemy o tym fakcie Ciebie i Zleceniobiorcę.
+
+        =render :partial=> 'shared/rafath_account'
+  .row
+    =banks

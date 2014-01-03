@@ -1,0 +1,21 @@
+-@page_title = title
+-@page_keywords = p_keywords||='escrow, bezpieczne transakcje online'
+-@page_description = p_description||=description
+.invitation
+  .main
+    -if description == 'account'
+      %ul
+        %li #{link_to_unless_current 'Lista Zaliczek', pro_index_path}
+        %li #{link_to 'Edycja danych', pro_edit_path, :class=> 'cbi'}
+        %li #{link_to 'Zmiana hasła', pro_pass_path, :class=> 'cbi'}
+        %li #{link_to 'Wyloguj się', logout_path}
+      =colorbox '.invitation ul a.cbi', {:width=> 770, :iframe=> true}
+    -else
+      %span
+        =description
+    %h1 #{title}
+
+#columns_wrapper.main
+  %ol.breadcrumbs
+    = breadcrumbs
+  =render :partial=> 'shared/flash', :locals=> {:flash=> flash}

@@ -1,0 +1,29 @@
+-unless request.xhr?
+  =render :partial=> 'shared/site_header', :locals=> {:title=> "Zaloguj się do serwisu", :p_description=> 'strona logowania', :description=> raw("Nie masz konta? #{link_to 'Załóż je', signup_path}")}
+  -css_class = 'main'
+-else
+  -css_class = 'main-iframe'
+#page-content{:class=> css_class}
+  .row
+    .col.col_12
+      -if request.xhr?
+        %h2 Zaloguj się
+      %p
+        Nie masz jeszcze konta? To je #{link_to 'założ', signup_path}.
+        Jeśli posiadasz konto i nie pamiętasz hasła, możesz je sobie #{link_to 'przypomnieć', :controller => 'password_resets', :action => 'new'}.
+      - @user.password = nil
+      = semantic_form_for @user, :url=> sessions_path do |form|
+        = form.inputs :name => '', :id=> "basic" do
+          = form.input :email
+          = form.input :password, :hint=> link_to('nie pamiętam hasła', :controller => 'password_resets', :action => 'new')
+          = form.input :remember_me, :label=> 'Zapamiętaj mnie', :as=> :boolean
+          = hidden_field_tag 'page', page ||= 'login'
+        = form.buttons do
+          = form.commit_button 'Zaloguj się'
+          %li
+            lub #{link_to 'załóż konto', new_user_path}
+            
+-if request.xhr?
+  :javascript
+    Cufon.replace('h1, h2, h3', { fontFamily: 'Myriad Pro' });
+    Cufon.now();

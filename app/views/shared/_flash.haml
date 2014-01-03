@@ -1,0 +1,5 @@
+-flash.each do |name, msg|
+  .bar-notice{:class=> "notice-#{name}"}
+    =content_tag :h6, msg
+  %script{:type=> 'text/javascript'}
+    setTimeout("$('.bar-notice').fadeOut('slow');", 3000);

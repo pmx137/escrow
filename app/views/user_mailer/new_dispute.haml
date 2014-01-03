@@ -1,0 +1,22 @@
+%p
+  %strong
+    Dzień dobry #{@dispute.defendant.firstname},
+
+%p
+  Otrzymujesz tą wiadomość, ponieważ użytkownik: #{@dispute.complainant.full_name} rozpoczął spór. Spór ma wyjaśnić, dlaczego
+  zlecenie nie zostało zakończone pomyślnie. Jeśli w ciągu 4 dni, spór nie zostanie zakończony zgodą obu stron, obsługa
+  serwisu zapozna się z Waszym sporem i podejmie decyzje, kto ma racje w sporze.
+  
+%p
+  %strong
+    Poniżej przyczyna sporu:
+%p
+  #{@dispute.complaint}
+  %br
+  kwota do wypłaty
+  %strong
+    #{set_price @dispute.amount_to_pay}
+
+%p
+  Możesz odpowiedzieć na spór, wejdź na stronę #{link_to dis_index_url(@dispute.payment_id), dis_index_url(@dispute.payment_id)}
+  i zostaw swój komentarz.

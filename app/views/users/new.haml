@@ -1,0 +1,25 @@
+=render :partial=> 'shared/site_header', :locals=> {:title=> "Załóż konto", :p_description=> 'Załóż konto na MojaZaliczka.pl, a Twoje płatności będą bezpieczne. Sprawdź dlaczego.', :description=> "Na tej stronie załóżysz konto do serwisu"}
+#page-content.main
+  %h2 Załóż konto
+  %p
+    Tutaj utworzysz swoje własne konto w serwisie Sisto.pl. Wystarczy że podasz podstawowe dane w formularzu.<br/>
+    Pamiętaj aby podać własny, prawdziwy adres e-mail. Na ten adres wyślemy kod umożliwiający ukończenie kolejnego kroku
+    rejestracji.
+
+    = semantic_form_for @user do |form|
+      = form.inputs :name => '', :id=> "basic" do
+        = form.input :email
+        = form.input :password
+        = form.input :password_confirmation
+
+        = form.input :firstname
+        = form.input :lastname
+        = form.input :account_owner
+        = form.input :account_no
+        
+      = form.inputs :name=> '', :id=> 'human' do
+        = form.input :humanizer_answer, :label=> "Odpowiedz na pytanie: #{@user.humanizer_question}"
+        = form.input :humanizer_question_id, :as=> :hidden
+
+      = form.buttons do
+        = form.commit_button 'Załóż konto '

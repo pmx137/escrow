@@ -1,0 +1,17 @@
+%ul.transfer
+  %li
+    Odbiorca:
+    %br
+    %strong Rafath Khan, Śródmieście 28/16, 16-300 Augustów
+  %li
+    Numer rachunku:
+    %br
+    %strong 23000039934939383848844993
+  %li
+    Tytuł płatności
+    %br
+    %strong Zaliczka: #{@payment.id}
+  %li
+    Kwota przelewu
+    %br
+    %strong #{set_price @payment.amount}

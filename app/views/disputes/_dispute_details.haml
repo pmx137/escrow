@@ -1,0 +1,23 @@
+-unless @payment.dispute.blank?
+  .dispute_info
+    %ul
+      %li
+        Kwota zaliczki:
+        %strong
+          #{set_price @payment.amount}
+      %li
+        kwota do zapłaty:
+        %strong
+          #{set_price @payment.dispute_amount_to_pay}
+      %li
+        Koniec sporu:
+        %strong
+          =time_to_end @payment.dispute_end_date
+      -if current_user.id == @payment.dispute_complainant_id and !@payment.dispute_is_ended
+        %li
+          =link_to 'edytuj spór', dis_edit_dispute_path(params[:id])
+  -if @payment.dispute_is_ended and !@payment.dispute_judgment.blank?
+    .judgement
+      %h3 Rozwiązanie sporu
+      %p
+        =@payment.dispute_judgment

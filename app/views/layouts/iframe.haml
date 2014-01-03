@@ -1,0 +1,18 @@
+!!!
+%html{:lang => "pl", "xml:lang" => "pl", :xmlns => "http://www.w3.org/1999/xhtml",'xmlns:og'=>"http://ogp.me/ns#", 'xmlns:fb'=>"http://www.facebook.com/2008/fbml"}
+  %head
+    %title= @page_title ||= 'Moja Zaliczka - bezpieczne zaliczki'
+    %meta{:content => "text/html;charset=utf-8", "http-equiv" => "content-type"}/
+    %meta{:content => @page_keywords, :name => "keywords"}/
+    %meta{:content => @page_description||= 'Nie musisz się obawiać, że gdy zostaniesz oszukany, to stracisz zaliczkę. Dowiedz się w jaki sposób Ty i Twoje pieniądze są chronieni', :name => "description"}/
+    %meta{'http-equiv'=> 'X-UA-Compatible', :content=> 'IE=8'}
+    =csrf_meta_tag
+    %link{:href => "icon.png", :rel => "icon", :type => "image/png"}
+    = stylesheet_link_tag 'iframe'
+    %script{:src=> 'http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js', :type=>'text/javascript'}
+    = javascript_include_tag  'iframe'
+
+  %body
+    .main-iframe
+      =render :partial=> 'shared/flash', :locals=> {:flash=> flash}
+      = yield
